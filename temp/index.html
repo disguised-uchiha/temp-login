@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizker</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="quiz.css" />
+    <style></style>
+  </head>
+  <body>
+    <h1>Quizker</h1>
+
+    <!-- Admin modal  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Admin Login
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <div class="mb-3">
+                <label for="adminEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="adminEmail">
+              </div>
+              <div class="mb-3">
+                <label for="adminPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="adminPassword">
+              </div>
+              <button type="button" class="btn btn-primary" onclick="onAdminLogin()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ul-top">
+      <div onclick="toggleForm('login')" ontouchstart="toggleForm('login')" class="Login active-tab">Login</div>
+      <div onclick="toggleForm('signup')" ontouchstart="toggleForm('signup')" class="Signup active-tab">Signup</div>
+
+      <!-- Login Form -->
+      <div id="loginForm" class="form-container">
+        <div class="loginas">Login as</div>
+        <button class="button" data-toggle="modal" data-target="#exampleModal">Admin</button> <br />
+        <br />
+        <button class="button">Student</button>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signupForm" class="form-container">
+        <div class="signupas">Sign Up</div>
+        <!-- Add your signup form fields here -->
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" name="signupUsername" required /><br /><br />
+
+        <label for="signupEmail">Email:</label>
+        <input type="email" id="signupEmail" name="signupEmail" required /><br /><br />
+
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" name="signupPassword" required /><br /><br />
+
+        <button type="submit" class="button">Signup</button>
+      </div>
+    </div>
+
+    <script>
+      function toggleForm(formType) {
+        var loginForm = document.getElementById("loginForm");
+        var signupForm = document.getElementById("signupForm");
+        var loginTab = document.querySelector(".Login");
+        var signupTab = document.querySelector(".Signup");
+
+        if (formType === "login") {
+          loginForm.style.display = "block";
+          signupForm.style.display = "none";
+          loginTab.classList.add("active-tab");
+          signupTab.classList.remove("active-tab");
+        } else if (formType === "signup") {
+          loginForm.style.display = "none";
+          signupForm.style.display = "block";
+          loginTab.classList.remove("active-tab");
+          signupTab.classList.add("active-tab");
+        }
+      }
+      toggleForm("signup");
+    </script>
+
+    <script src="./admin-login.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
